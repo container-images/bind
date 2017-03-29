@@ -1,0 +1,34 @@
+domains:
+    blog.example.net:
+        mname: master.ns
+        rname: hostmaster
+        serial: 000000000
+        refresh: 1d
+        retry: 15m
+        expire: 4w
+        minimum: 10m
+        nameservers:
+            - a.ns
+            - b.ns
+        records:
+            a.ns:
+                A:
+                    - 192.0.2.1
+                AAAA:
+                    - 2001:db8::1
+            b.ns:
+                A:
+                    - 192.0.2.2
+                AAAA:
+                    - 2001:db8::2
+            server:
+                A:
+                    - 192.0.2.3
+                AAAA:
+                    - 2001:db8::3
+            www:
+                CNAME:
+                    - server
+            _xmpp-server._tcp:
+                SRV:
+                    - 10 0 5269 server
