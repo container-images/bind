@@ -1,5 +1,5 @@
 domains:
-    blog.example.net:
+    example.net:
         mname: master.ns
         rname: hostmaster
         serial: 000000000

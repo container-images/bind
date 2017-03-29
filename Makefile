@@ -1,6 +1,6 @@
 .PHONY: build run
 
-TYPE='CACHING'
+TYPE='AUTHORITATIVE'
 
 IMAGE_NAME = dns-bind
 IMAGE_OPTIONS = \

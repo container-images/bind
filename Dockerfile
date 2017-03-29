@@ -1,8 +1,20 @@
 FROM fedora:25
 
-MAINTAINER Pavel Šimerda, Red Hat <psimerda@redhat.com>
+# Description
+# Exposed ports:
+# * 53 - domain name system
 
-RUN dnf install -y bind initscripts python-mako PyYAML && dnf -y clean all
+MAINTAINER Rado Pitonak <rpitonak@redhat.com>
+
+LABEL summary = "Bind enables you to publish your DNS information on the Internet, and to resolve DNS queries for your users" \
+      name = "dns-bind" \
+      version = "9" \
+      release = "0.1"
+
+
+# install bind service and helper services to generate configuration files for DNS server
+RUN dnf install -y --setopt=tsflags=nodocs bind initscripts python-mako PyYAML && \
+    dnf -y clean all
 
 ADD files /files
 
