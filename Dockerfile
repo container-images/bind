@@ -6,10 +6,17 @@ FROM fedora:25
 
 MAINTAINER Rado Pitonak <rpitonak@redhat.com>
 
-LABEL summary = "Bind enables you to publish your DNS information on the Internet, and to resolve DNS queries for your users" \
+LABEL summary = "Bind is a Domain Name System(DNS) resolver and server." \
       name = "dns-bind" \
       version = "9" \
-      release = "0.1"
+      release = "0.1" \
+      description = "Bind enables you to publish your DNS information on the Internet, and to resolve DNS queries for your users"
+      vendor="Fedora Project" \
+      org.fedoraproject.component="dns-bind" \
+      authoritative-source-url="registry.fedoraproject.org" \
+      io.k8s.description="Bind enables you to publish your DNS information on the Internet, and to resolve DNS queries for your users" \
+      io.k8s.display-name="dns-bind" \
+      io.openshift.tags="dns-bind, bind, dns"
 
 
 # install bind service and helper services to generate configuration files for DNS server

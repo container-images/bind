@@ -19,4 +19,4 @@ build: Makefile Dockerfile files/*
 	docker build --tag=$(IMAGE_NAME) .
 
 test:
-	run_test.sh
+	run-test.sh
