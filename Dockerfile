@@ -11,8 +11,8 @@ ENV NAME=dns-bind \
     RELEASE=1 \
     ARCH=x86_64
 
-LABEL summary = "Bind is a Domain Name System(DNS) resolver and server." \
-      name = "dns-bind" \
+LABEL summary = "Bind is a Domain Name System (DNS) resolver and server." \
+      name = "$FGC/$NAME" \
       version = "$VERSION" \
       release="$RELEASE.$DISTTAG"  \
       architecture = "$ARCH" \

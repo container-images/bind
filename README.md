@@ -16,7 +16,7 @@ There are two options for running DNS server:
 ```
 docker run -d -p 127.0.0.1:53:53 -p 127.0.0.1:53:53/udp -e SERVER_TYPE=<TYPE> modularitycontainers/dns-bind
 ```
-Substitute \<TYPE\> with either 'AUTHORITATIVE' or 'CACHING' option. If SERVER_TYPE is not set default value is 'CACHING'.
+Substitute \<TYPE\> with either 'AUTHORITATIVE' or 'CACHING' option. If the option value is not provided, the default value is 'CACHING'.
 ### 2) Makefile
 ```
 $ make

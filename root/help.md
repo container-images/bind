@@ -18,7 +18,7 @@ To run your DNS server in docker container:
 
       # docker run -d -p 127.0.0.1:53:53 -p 127.0.0.1:53:53/udp -e SERVER_TYPE=<TYPE> modularitycontainers/dns-bind
 
-Substitute <TYPE> with either `AUTHORITATIVE` or `CACHING` option. If option value is not provided default value is `CACHING`.
+Substitute <TYPE> with either the `AUTHORITATIVE` or `CACHING` option. If the option value is not provided, the default value is `CACHING`.
 
 ## ENVIROMENT VARIABLES
 
