@@ -1,0 +1,70 @@
+.TH "dns-bind" "1" "" "Rado Pitonak \<rpitonak@redhat.com\>" "DATE 19.04.2017"  ""
+
+
+.SH NAME
+.PP
+dns\-bind \- Domain name system resolver and server.
+
+
+.SH DESCRIPTION
+.PP
+Bind enables you to publish your DNS information on the Internet, and to resolve DNS queries for your users. This image is based on Fedora.
+
+.SH USAGE
+.PP
+To pull the dns\-bind container run:
+
+.PP
+.RS
+
+.nf
+  # docker pull modularitycontainers/dns\-bind
+
+.fi
+.RE
+
+.PP
+To run your DNS server in docker container:
+
+.PP
+.RS
+
+.nf
+  # docker run \-d \-p 127.0.0.1:53:53 \-p 127.0.0.1:53:53/udp \-e SERVER\_TYPE=<TYPE> modularitycontainers/dns\-bind
+
+.fi
+.RE
+
+.PP
+Substitute <TYPE> with either the \fB\fCAUTHORITATIVE\fR or \fB\fCCACHING\fR option. If the option value is not provided, the default value is \fB\fCCACHING\fR.
+
+.SH ENVIROMENT VARIABLES
+.PP
+SERVER\_TYPE
+    Type of DNS server.
+    DEFAULT: CACHING
+
+.SH SECURITY IMPLICATIONS
+.PP
+\-d
+
+.PP
+.RS
+
+.nf
+ Runs continuously as a daemon process in the background
+
+.fi
+.RE
+
+.PP
+\-p 127.0.0.1:53:53
+
+.PP
+.RS
+
+.nf
+ Opens  container  port  53  and  maps it to the same port on the Host.     
+
+.fi
+.RE
