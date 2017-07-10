@@ -29,14 +29,6 @@ class SanityCheck(module_framework.AvocadoTest):
     :avocado: enable
     """
 
-    def test1(self):
-        """
-        Simple sanity test
-        """
-
-        self.start()
-        self.run("ls / | grep bin")
-
     def test2BINDVersion(self):
         """
         Check if BIND is installed in correct version

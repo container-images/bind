@@ -1,4 +1,4 @@
-Bind Docker image
+Bind container image
 ====================
 
 This repository contains Dockerfile for [BIND](https://www.isc.org/downloads/bind/) based on [baseruntime](""https://hub.docker.com/r/baseruntime/baseruntime/) for the Fedora 26 Boltron general usage.
