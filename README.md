@@ -1,8 +1,12 @@
-# DNS server
+Bind container image
+====================
 
-An example of [bind DNS server](https://www.isc.org/downloads/bind/) running in docker container based on **fedora 25**.
+This repository contains Dockerfile for [BIND](https://www.isc.org/downloads/bind/) based on [baseruntime](""https://hub.docker.com/r/baseruntime/baseruntime/) for the Fedora 26 Boltron general usage.
+For more information about modules see official [Fedora Modularity documentation](docs.pagure.org/modularity/).
 
-## Configuration
+
+Configuration
+----------------------------------
 
 There are two options for running DNS server:
  - Authoritative
@@ -10,46 +14,34 @@ There are two options for running DNS server:
  - Caching (recursive)
     - you can set nameservers in [config.yaml](./files/caching-dns/config.yaml)
 
-## Running in docker
 
-### 1) Shell
+Environment variables
+----------------------------------   
+
+|    Variable name                |    Description                                                     |    Default
+| :------------------------------ | ------------------------------------------------------------------ | -------------------------------
+|  `SERVER_TYPE`                  | Type of DNS server. The options are 'AUTHORITATIVE' and 'CACHING'. |  CACHING
+
+Usage
+----------------------------------
+
 ```
 docker run -d -p 127.0.0.1:53:53 -p 127.0.0.1:53:53/udp -e SERVER_TYPE=<TYPE> modularitycontainers/dns-bind
 ```
 Substitute \<TYPE\> with either 'AUTHORITATIVE' or 'CACHING' option. If the option value is not provided, the default value is 'CACHING'.
-### 2) Makefile
+
+Test
+----------------------------------
+This repository also provides tests (based on [MTF](https://pagure.io/modularity-testing-framework/tree/master)) which checks basic functionality of the DNS-BIND image.
+
+Run the tests using Makefile :
 ```
-$ make
-```
-This will build, tag and run container. You can change tag by editing this line
-```
-IMAGE_NAME = dns-bind
-```
-**Important** variable you can change is type of dns server.
-```
-TYPE='CACHING'
-```
-```
-TYPE='AUTHORITATIVE'
-```
-Options of running container can be set like this
-```
-IMAGE_OPTIONS = \
-    -p 127.0.0.1:53:53 \
-    -p 127.0.0.1:53:53/udp \
-	  -e SERVER_TYPE=$(TYPE)
+$ make test
 ```
 
-## Deployment notes
 
-At the time of writing this note, docker doesn't work well with firewalld.
-Some of the commands below may seem redundant but this is what works for me
-at the moment.
+Notes
+----------------------------------
 
-    systemctl mask firewalld
-    systemctl stop firewalld
-    iptables -F
-    systemctl restart docker
-
-Also note that the current version of the image talks to authoritative name
+Note that the current version of the image talks to authoritative name
 servers and therefore doesn't work in restricted environments.

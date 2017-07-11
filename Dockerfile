@@ -1,4 +1,4 @@
-FROM registry.fedoraproject.org/fedora:25
+FROM baseruntime/baseruntime:latest
 
 # Description
 # Exposed ports:
@@ -28,17 +28,20 @@ LABEL summary = "Bind is a Domain Name System (DNS) resolver and server." \
       io.openshift.expose-services="53:domain name system"
 
 
+COPY repos/* /etc/yum.repos.d/
+
 # install bind service and helper services to generate configuration files for DNS server
-RUN dnf install -y --setopt=tsflags=nodocs bind initscripts python-mako PyYAML && \
-    dnf -y clean all
+RUN microdnf --nodocs install bind bind-utils && \
+    microdnf --nodocs --enablerepo fedora install initscripts python-mako PyYAML && \
+    microdnf clean all
 
 ADD files /files
 
 # add help file
-ADD root/help.1 /
+COPY root/help.1 /
 
 RUN /files/bind-config.sh
 
 EXPOSE 53
 
-CMD bin/sh /files/run-script.sh
+CMD ["/files/run-script.sh"]

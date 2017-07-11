@@ -1,3 +1,5 @@
+#!/bin/sh
+
 if [[ -z "${SERVER_TYPE}" ]]; then
   SCRIPT_SERVER_TYPE="CACHING" # caching is default dns server configuration
 else
