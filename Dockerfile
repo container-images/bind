@@ -27,7 +27,6 @@ LABEL summary = "Bind is a Domain Name System (DNS) resolver and server." \
       io.openshift.tags="dns-bind, bind, dns" \
       io.openshift.expose-services="53:domain name system"
 
-
 COPY repos/* /etc/yum.repos.d/
 
 # install bind service and helper services to generate configuration files for DNS server
