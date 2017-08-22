@@ -2,7 +2,7 @@
 
 TYPE='AUTHORITATIVE'
 
-IMAGE_NAME = modularitycontainers/dns-bind
+IMAGE_NAME = modularitycontainers/bind
 IMAGE_OPTIONS = \
     -p 127.0.0.1:53:53 \
     -p 127.0.0.1:53:53/udp \

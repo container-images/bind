@@ -1,6 +1,6 @@
 document: modularity-testing
 version: 1
-name: dns-bind
+name: bind
 modulemd-url: https://src.fedoraproject.org/modules/bind/raw/master/f/bind.yaml
 service:
     port: 53
@@ -13,8 +13,8 @@ testdependecies:
 module:
     docker:
         start: "docker run -it -p 127.0.0.1:53:53 -p 127.0.0.1:53:53/udp -e SERVER_TYPE=CACHING"
-        source: https://github.com/container-images/dns-bind
-        container: modularitycontainers/dns-bind
+        source: https://github.com/container-images/bind
+        container: modularitycontainers/bind
     rpm:
         repo:
             - http://mirror.vutbr.cz/fedora/releases/26/Everything/x86_64/os/
