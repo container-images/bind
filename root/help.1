@@ -1,11 +1,11 @@
-.TH "DNS-BIND " "1" " Container Image Pages" "Rado Pitonak" "June 22, 2017" 
+.TH "bind " "1" " Container Image Pages" "Rado Pitonak" "June 22, 2017" 
 .nh
 .ad l
 
 
 .SH NAME
 .PP
-dns\-bind \- Bind is a Domain Name System (DNS) resolver and server.
+bind \- Bind is a Domain Name System (DNS) resolver and server.
 
 
 .SH DESCRIPTION
@@ -21,7 +21,7 @@ You can run this image in docker like this:
 .RS
 
 .nf
-  # docker run \-d \-p 127.0.0.1:53:53 \-p 127.0.0.1:53:53/udp \-e SERVER\_TYPE=<TYPE> modularitycontainers/dns\-bind
+  # docker run \-d \-p 127.0.0.1:53:53 \-p 127.0.0.1:53:53/udp \-e SERVER\_TYPE=<TYPE> modularitycontainers/bind
 
 .fi
 .RE
@@ -31,14 +31,32 @@ Substitute <TYPE> with either 'AUTHORITATIVE' or 'CACHING' option. If the option
 
 .PP
 There are two options for running DNS server:
- \- Authoritative
-    \- you need set domains in /files/authoritative\-dns/config.yaml
- \- Caching (recursive)
-    \- you can set nameservers in /files/caching\-dns/config.yaml
+
+.SH 1) Authoritative
+.PP
+Authoritative\-only servers only respond to iterative queries for the zones that they are authoritative for. This means that if the server does not know the answer, it will just tell the client (usually some kind of resolving DNS server) that it does not know the answer and give a reference to a server that may know more.
+
+.PP
+Authoritative\-only DNS servers are often a good configuration for high performance because they do not have the overhead of resolving recursive queries from clients. They only care about the zones that they are designed to serve.
+
+.PP
+Domains need to be set in config.yaml
+\[la]./files/authoritative-dns/config.yaml\[ra]
+
+.SH 2) Caching (recursive)
+.PP
+This type of server is also known as a resolver because it handles recursive queries and generally can handle the grunt work of tracking down DNS data from other servers.
+
+.PP
+When a caching DNS server tracks down the answer to a client's query, it returns the answer to the client. But it also stores the answer in its cache for the period of time. The cache can then be used as a source for subsequent requests in order to speed up the total round\-trip time.
+
+.PP
+Nameservers can be set in config.yaml
+\[la]./files/caching-dns/config.yaml\[ra]
 
 .PP
 Image can also be run in Openshift. You can obtain the template in the repository of this image \- 
-\[la]https://github.com/container-images/dns-bind\[ra]\&. You also need to have SCC RunAsUser set to RunAsAny. Then run:
+\[la]https://github.com/container-images/bind\[ra]\&. You also need to have SCC RunAsUser set to RunAsAny. Then run:
 
 .PP
 .RS
@@ -74,4 +92,4 @@ Similar to a Changelog of sorts which can be as detailed as the maintainer wishe
 .SH SEE ALSO
 .PP
 Github page for this container with detailed description: 
-\[la]https://github.com/container-images/dns-bind\[ra]
+\[la]https://github.com/container-images/bind\[ra]
