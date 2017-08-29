@@ -1,9 +1,9 @@
-% bind (1) Container Image Pages
-% Rado Pitonak
+% {{ spec.envvars.name }} (1) Container Image Pages
+% {{ spec.maintainer }}
 % June 22, 2017
 
 # NAME
-bind - Bind is a Domain Name System (DNS) resolver and server.
+{{ spec.envvars.name }} - {{ spec.description }}
 
 # DESCRIPTION
 This container image provides the Domain Name System (DNS) resolver and server. It uses Base runtime as a base image with Bind installed as a module.
@@ -14,6 +14,8 @@ You can run this image in docker like this:
       # docker run -d -p 127.0.0.1:53:53 -p 127.0.0.1:53:53/udp -e SERVER_TYPE=<TYPE> modularitycontainers/bind
 
 Substitute \<TYPE\> with either 'AUTHORITATIVE' or 'CACHING' option. If the option value is not provided, the default value is 'CACHING'.
+
+{{ spec.distro_specific_help }}
 
 There are two options for running DNS server:
 
