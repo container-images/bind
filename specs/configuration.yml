@@ -1,3 +1,18 @@
+maintainer: Rado Pitonak <rpitonak@redhat.com>
+
+expose: 53
+
+description:  Bind is a Domain Name System (DNS) resolver and server.
+
+envvars:
+  name: bind
+  version: 0
+  release: 1
+  arch: x86_64
+
+# service configuration
+
+recursion: no
 domains:
     example.net:
         mname: master.ns
