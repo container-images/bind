@@ -4,7 +4,7 @@ TYPE='AUTHORITATIVE'
 
 DISTRO = fedora-26-x86_64
 VERSION = 9
-DG = /home/rpitonak/.local/bin/dg
+DG = /usr/bin/dg
 
 DG_EXEC = ${DG} --distro ${DISTRO}.yaml --spec specs/configuration.yml --multispec specs/multispec.yml --multispec-selector version=${VERSION}
 DISTRO_ID = $(shell ${DG_EXEC} --template "{{ config.os.id }}")
