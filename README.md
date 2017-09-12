@@ -34,6 +34,18 @@ Environment variables
 | :------------------------------ | ------------------------------------------------------------------ | -------------------------------
 |  `SERVER_TYPE`                  | Type of DNS server. The options are 'AUTHORITATIVE' and 'CACHING'. |  CACHING
 
+Build
+----------------------------------
+
+Container image uses [distgen](https://github.com/devexp-db/distgen) to provide portability. To build the image, run:
+```
+$ make build
+```
+Build requires go-md2man for man page generation, use dnf(or another package manager) to istall it before building:
+```
+# dnf install go-md2man
+```
+
 Usage
 ----------------------------------
 
